@@ -15,7 +15,7 @@ def listarAluno():
     if len(alunos) == 0: 
         Resposta["Status"] = "Sucesso"
         Resposta["Dados"] = []
-        Resposta["Mensagem"] = "Não há alunos"
+        Resposta["Mensagem"] = "Nao ha alunos"
 
         return jsonify(Resposta)
 
@@ -37,7 +37,7 @@ def consultaAluno(ra):
 
     Resposta["Status"] = "Error"
     Resposta["Dados"] = {}
-    Resposta["Mensagem"] = "Aluno não encontrado"
+    Resposta["Mensagem"] = "Aluno nao encontrado"
     return jsonify(Resposta)
 
 @app.route("/alunos", methods=["POST"])
@@ -66,7 +66,7 @@ def atualizaAluno(ra):
 
     Resposta["Status"] = "Error"
     Resposta["Dados"] = {}
-    Resposta["Mensagem"] = "Aluno não encontrado"
+    Resposta["Mensagem"] = "Aluno nao encontrado"
     return jsonify(Resposta)
 
 @app.route("/alunos/<ra>", methods=["DELETE"])
@@ -82,5 +82,5 @@ def removerAluno(ra):
 
     Resposta["Status"] = "Error"
     Resposta["Dados"] = {}
-    Resposta["Mensagem"] = "Aluno não encontrado"
+    Resposta["Mensagem"] = "Aluno nao encontrado"
     return jsonify(Resposta)
