@@ -3,6 +3,7 @@ from flask import jsonify
 from flask import request
 from Services.AtualizarAluno import atualizarAluno
 from Services.CadastrarAluno import cadastrarAluno
+from Services.DeletarAluno import deletarAluno
 from Services.ListarAluno import listarAlunos
 from Services.ConsultarAluno import consultarAluno
 from Models.Aluno import Aluno
@@ -51,16 +52,32 @@ def cadastroAluno():
 
     return jsonify(Resposta)
 
-@app.route("/alunos", methods=["PUT"])
-def atualizaAluno():
+@app.route("/alunos/<ra>", methods=["PUT"])
+def atualizaAluno(ra):
     dados = request.get_json()
 
-    aluno = atualizarAluno({"ra":dados["ra"], "nome":dados["nome"]})
+    aluno = atualizarAluno({"ra":dados["ra"], "nome":dados["nome"]},ra)
 
     if aluno:
         Resposta["Status"] = "Sucesso"
         Resposta["Dados"] = aluno
-        Resposta["Mensagem"] = "Consulta de Alunos"
+        Resposta["Mensagem"] = "Aluno atualizado"
+        return jsonify(Resposta)
+
+    Resposta["Status"] = "Error"
+    Resposta["Dados"] = {}
+    Resposta["Mensagem"] = "Aluno não encontrado"
+    return jsonify(Resposta)
+
+@app.route("/alunos/<ra>", methods=["DELETE"])
+def removerAluno(ra):
+
+    removido = deletarAluno(ra)
+
+    if removido:
+        Resposta["Status"] = "Sucesso"
+        Resposta["Dados"] = {}
+        Resposta["Mensagem"] = "Aluno Removido"
         return jsonify(Resposta)
 
     Resposta["Status"] = "Error"
