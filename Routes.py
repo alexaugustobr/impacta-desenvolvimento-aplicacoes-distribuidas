@@ -84,3 +84,25 @@ def removerAluno(ra):
     Resposta["Dados"] = {}
     Resposta["Mensagem"] = "Aluno nao encontrado"
     return jsonify(Resposta)
+
+@app.route("/forums", methods=["POST"])
+def criarForum():
+    dados = request.get_json()
+
+    forum = criarForum(
+        {
+        "ForumId":dados["ForumId"], 
+        "OwnerId":dados["OwnerId"], 
+        "Title": dados["Title"], 
+        "Description":dados["Description"], 
+        "CreateDate":dados["CreateDate"], 
+        "LastPostDate":dados["LastPostDate"], 
+        "Active":dados["Active"]
+        }
+    )
+
+    Resposta["Status"] = "Sucesso"
+    Resposta["Dados"] = forum
+    Resposta["Mensagem"] = "Forum Criado"
+
+    return jsonify(Resposta)
