@@ -1,0 +1,1 @@
+Postagem = {"Id":"", "IdForum": "", "IdCriador":"", "DataHora":"", "Mensagem": "", "Visivel":""}
