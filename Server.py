@@ -4,6 +4,8 @@ app = Flask(__name__)
 
 alunos = []
 
+forums = []
+
 from Routes import *
 
 from ErroHandlers import *
