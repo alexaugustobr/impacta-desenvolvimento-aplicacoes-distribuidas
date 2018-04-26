@@ -1,6 +1,5 @@
 from Server import app
-from flask import jsonify
-from flask import request
+from flask import jsonify, request
 from Services.AtualizarAluno import atualizarAluno
 from Services.CadastrarAluno import cadastrarAluno
 from Services.DeletarAluno import deletarAluno
