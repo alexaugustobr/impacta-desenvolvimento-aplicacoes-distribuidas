@@ -4,7 +4,7 @@ from flask import jsonify
 def listaPostagensForum():
     return foruns
 
-@app.route("/forum", methods=["GET"])
+@app.route("/forum/<ForumId>/post", methods=["GET"])
 def listaPostagensForuns():
     foruns = listaPostagensForum()
     Resposta = {"Status":"","Dados":"", "Mensagem":""}
