@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 alunos = []
 
-forums = []
+foruns = []
 
 posts = []
 
