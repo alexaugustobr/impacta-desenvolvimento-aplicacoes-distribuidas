@@ -84,3 +84,4 @@ def removerAluno(ra):
     Resposta["Dados"] = {}
     Resposta["Mensagem"] = "Aluno nao encontrado"
     return jsonify(Resposta)
+
