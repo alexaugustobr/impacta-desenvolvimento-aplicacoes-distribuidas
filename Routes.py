@@ -85,6 +85,7 @@ def removerAluno(ra):
     Resposta["Mensagem"] = "Aluno nao encontrado"
     return jsonify(Resposta)
 
+
 @app.route("/forums", methods=["POST"])
 def criarForum():
     dados = request.get_json()
@@ -106,3 +107,4 @@ def criarForum():
     Resposta["Mensagem"] = "Forum Criado"
 
     return jsonify(Resposta)
+
