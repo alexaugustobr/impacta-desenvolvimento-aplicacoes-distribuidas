@@ -1,11 +1,11 @@
 from Server import foruns
 from flask import jsonify
 
-def listaPostagensForum():
+def listaPostagensForum(ForumId):
     return foruns
 
 @app.route("/forum/<ForumId>/post", methods=["GET"])
-def listaPostagensForuns():
+def listaPostagensForuns(ForumId):
     foruns = listaPostagensForum()
     Resposta = {"Status":"","Dados":"", "Mensagem":""}
 
