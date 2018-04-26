@@ -1,7 +1,6 @@
 from Server import foruns
 from flask import jsonify
 
-
 def listaPostagensForum():
     return foruns
 
