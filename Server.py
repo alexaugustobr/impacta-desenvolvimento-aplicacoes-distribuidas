@@ -6,6 +6,8 @@ alunos = []
 
 forums = []
 
+posts = []
+
 from Routes import *
 
 from ErroHandlers import *
