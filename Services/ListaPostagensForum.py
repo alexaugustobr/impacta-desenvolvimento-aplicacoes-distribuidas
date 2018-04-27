@@ -1,23 +1,12 @@
-from Server import foruns
+from Server import posts
 from flask import jsonify
 
 def listaPostagensForum(ForumId):
-    return foruns
+    postagensDesseForum = []
+    #verificar se ForumId existe
 
-@app.route("/forum/<ForumId>/post", methods=["GET"])
-def listaPostagensForuns(ForumId):
-    forum = listaPostagensForum(ForumId)
-    Resposta = {"Status":"","Dados":"", "Mensagem":""}
+    for post in posts:
+        if post['ForumId'] == ForumId:
+            postagensDesseForum.append(post)
 
-    if len(foruns) == 0: 
-        Resposta["Status"] = "Sucesso"
-        Resposta["Dados"] = []
-        Resposta["Mensagem"] = "Nao ha foruns"
-
-        return jsonify(Resposta)
-
-    Resposta["Status"] = "Sucesso"
-    Resposta["Dados"] = forum
-    Resposta["Mensagem"] = "Lista postagens"
-
-    return jsonify(Resposta)
+    return postagensDesseForum
