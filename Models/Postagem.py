@@ -1,1 +1,1 @@
-Postagem = {"PostId":"", "ForumId": "", "OwnerId":"", "CreateDate":"", "Message": "", "Visible":""}
+Postagem = {"PostId":"", "ForumId": "", "OwnerId":"", "CreateDate":"", "Message": "", "Visible":True}

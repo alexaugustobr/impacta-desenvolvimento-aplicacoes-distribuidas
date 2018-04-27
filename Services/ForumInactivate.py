@@ -1,9 +1,11 @@
 from Server import forums
 
-def InativarForum(ForumId):
+def InativarForum():
+    Dados = request.get_json()
+
     for forum in forums:
-        if str(forum["ForumId"]) == str(ForumId):
-            if str(forum["Active"]) == True:
-                forum["Active"] = False:
+        if str(forum["ForumId"]) == str(Dados["ForumId"]) and str(forum["OwnerId"]) == str(Dados["OwnerId"]):
+            if forum["Active"] == True:
+                forum["Active"] = False
                 return forum
     return None
