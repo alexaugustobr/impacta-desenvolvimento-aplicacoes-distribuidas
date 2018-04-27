@@ -11,6 +11,7 @@ from Models.Aluno import Aluno
 from Models.Resposta import Resposta
 from Services.ListaPostagensForum import listaPostagensForum
 from Services.consultaForum import consultarForum
+from Services.ListarForum import listarforum
 
 @app.route("/alunos", methods=["GET"])
 def listarAluno():
@@ -175,4 +176,21 @@ def consultaForum(ForumId):
     Resposta["Status"] = "Error"
     Resposta["Dados"] = {}
     Resposta["Mensagem"] = "forum nao encontrado"
+    return jsonify(Resposta)
+
+
+
+@app.route("/forum", methods=["GET"])
+def listarForunsAtivos():
+    foruns = listarforum()
+
+    if Forumid
+        Resposta["Status"] = "Sucesso"
+        Resposta["Dados"] = foruns
+        Resposta["Mensagem"] = "Consulta de Forum"
+        return jsonify(Resposta)
+
+    Resposta["Status"] = "Error"
+    Resposta["Dados"] = {}
+    Resposta["Mensagem"] = "Sem foruns"
     return jsonify(Resposta)
