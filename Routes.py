@@ -116,9 +116,7 @@ def criarForum():
     Resposta["Mensagem"] = "Forum Criado"
 
     return jsonify(Resposta)
-    
 
-<<<<<<< HEAD
 @app.route("/forum/post", methods=["POST"])
 def criarPost():
     dados = request.get_json()
@@ -132,7 +130,7 @@ def criarPost():
             "Visible": dados["Visible"]
         }
     )
-=======
+
 @app.route("/forum/inactivate", methods=["POST"])
 def InativarForumRota():
     if forum:
@@ -146,7 +144,6 @@ def InativarForumRota():
     Resposta["Mensagem"] = "Forum nao encontrado"
     return jsonify(Resposta)
 
-
 @app.route("/forum/activate", methods=["POST"])
 def AtivarForumRota():
     if forum:
@@ -159,8 +156,6 @@ def AtivarForumRota():
     Resposta["Dados"] = {}
     Resposta["Mensagem"] = "Forum nao encontrado"
     return jsonify(Resposta)
-
-
 
 @app.route("/forum/<ForumId>/post", methods=["GET"])
 def listaPostagensForuns(ForumId):
@@ -180,7 +175,6 @@ def listaPostagensForuns(ForumId):
 
     return jsonify(Resposta)
 
-
 @app.route("/foruns/<ForumId>", methods=["GET"])
 def consultaForum(ForumId):
     forum = consultarForum(ForumId)
@@ -198,8 +192,6 @@ def consultaForum(ForumId):
     Resposta["Mensagem"] = "forum nao encontrado"
     return jsonify(Resposta)
 
-
-
 @app.route("/forum", methods=["GET"])
 def listarForunsAtivos():
     foruns = listarforum()
@@ -214,4 +206,3 @@ def listarForunsAtivos():
     Resposta["Dados"] = {}
     Resposta["Mensagem"] = "Sem foruns"
     return jsonify(Resposta)
->>>>>>> 195162cccc30e2f49e996eec8c39b5cb66e9b59c
