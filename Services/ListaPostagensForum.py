@@ -6,7 +6,7 @@ def listaPostagensForum(ForumId):
 
 @app.route("/forum/<ForumId>/post", methods=["GET"])
 def listaPostagensForuns(ForumId):
-    foruns = listaPostagensForum()
+    forum = listaPostagensForum(ForumId)
     Resposta = {"Status":"","Dados":"", "Mensagem":""}
 
     if len(foruns) == 0: 
@@ -17,7 +17,7 @@ def listaPostagensForuns(ForumId):
         return jsonify(Resposta)
 
     Resposta["Status"] = "Sucesso"
-    Resposta["Dados"] = foruns
+    Resposta["Dados"] = forum
     Resposta["Mensagem"] = "Lista postagens"
 
     return jsonify(Resposta)
