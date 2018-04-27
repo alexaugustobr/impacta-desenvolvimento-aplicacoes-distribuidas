@@ -1,1 +1,1 @@
-Forum = {"ForumId":"", "OwnerId":"", "Title": "", "Description":"", "CreateDate":"", "LastPostDate":"", "Active":""}
+Forum = {"ForumId":"", "OwnerId":"", "Title": "", "Description":"", "CreateDate":"", "LastPostDate":"", "Active":True}

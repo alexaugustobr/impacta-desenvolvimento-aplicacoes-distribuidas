@@ -5,6 +5,8 @@ from Services.CadastrarAluno import cadastrarAluno
 from Services.DeletarAluno import deletarAluno
 from Services.ListarAluno import listarAlunos
 from Services.ConsultarAluno import consultarAluno
+from Services.ForumInactivate import InativarForum
+from Services.ForumActivate import AtivarForum
 from Models.Aluno import Aluno
 from Models.Resposta import Resposta
 
@@ -105,5 +107,33 @@ def criarForum():
     Resposta["Dados"] = forum
     Resposta["Mensagem"] = "Forum Criado"
 
+    return jsonify(Resposta)
+    
+
+@app.route("/forums/forum/inactivate", methods=["POST"])
+def InativarForumRota():
+    if forum:
+        Resposta["Status"] = "Sucesso"
+        Resposta["Dados"] = InativarForum()
+        Resposta["Mensagem"] = "Forum Inativado"
+        return jsonify(Resposta)
+
+    Resposta["Status"] = "Error"
+    Resposta["Dados"] = {}
+    Resposta["Mensagem"] = "Forum nao encontrado"
+    return jsonify(Resposta)
+
+
+@app.route("/forums/forum/activate", methods=["POST"])
+def AtivarForumRota():
+    if forum:
+        Resposta["Status"] = "Sucesso"
+        Resposta["Dados"] = AtivarForum()
+        Resposta["Mensagem"] = "Forum ativado"
+        return jsonify(Resposta)
+
+    Resposta["Status"] = "Error"
+    Resposta["Dados"] = {}
+    Resposta["Mensagem"] = "Forum nao encontrado"
     return jsonify(Resposta)
 
