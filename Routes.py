@@ -5,13 +5,13 @@ from Services.CadastrarAluno import cadastrarAluno
 from Services.DeletarAluno import deletarAluno
 from Services.ListarAluno import listarAlunos
 from Services.ConsultarAluno import consultarAluno
-<<<<<<< HEAD
+
 from Services.CriarForum import criarForum
 from Services.CriarPost import criarPost
-=======
+
 from Services.ForumInactivate import InativarForum
 from Services.ForumActivate import AtivarForum
->>>>>>> 195162cccc30e2f49e996eec8c39b5cb66e9b59c
+
 from Models.Aluno import Aluno
 from Models.Resposta import Resposta
 from Services.ListaPostagensForum import listaPostagensForum
