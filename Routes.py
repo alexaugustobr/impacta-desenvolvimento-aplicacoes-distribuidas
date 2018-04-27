@@ -110,7 +110,7 @@ def criarForum():
     return jsonify(Resposta)
     
 
-@app.route("/forums/forum/inactivate", methods=["POST"])
+@app.route("/forum/inactivate", methods=["POST"])
 def InativarForumRota():
     if forum:
         Resposta["Status"] = "Sucesso"
@@ -124,7 +124,7 @@ def InativarForumRota():
     return jsonify(Resposta)
 
 
-@app.route("/forums/forum/activate", methods=["POST"])
+@app.route("/forum/activate", methods=["POST"])
 def AtivarForumRota():
     if forum:
         Resposta["Status"] = "Sucesso"
