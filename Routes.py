@@ -9,6 +9,8 @@ from Services.ForumInactivate import InativarForum
 from Services.ForumActivate import AtivarForum
 from Models.Aluno import Aluno
 from Models.Resposta import Resposta
+from Services.ListaPostagensForum import listaPostagensForum
+from Services.consultaForum import consultarForum
 
 @app.route("/alunos", methods=["GET"])
 def listarAluno():
@@ -137,3 +139,40 @@ def AtivarForumRota():
     Resposta["Mensagem"] = "Forum nao encontrado"
     return jsonify(Resposta)
 
+
+
+@app.route("/forum/<ForumId>/post", methods=["GET"])
+def listaPostagensForuns(ForumId):
+    postagens = listaPostagensForum(ForumId)
+    Resposta = {"Status":"","Dados":"", "Mensagem":""}
+
+    if len(foruns) == 0: 
+        Resposta["Status"] = "Sucesso"
+        Resposta["Dados"] = []
+        Resposta["Mensagem"] = "Nao ha foruns"
+
+        return jsonify(Resposta)
+
+    Resposta["Status"] = "Sucesso"
+    Resposta["Dados"] = postagens
+    Resposta["Mensagem"] = "Lista postagens"
+
+    return jsonify(Resposta)
+
+
+@app.route("/foruns/<ForumId>", methods=["GET"])
+def consultaForum(ForumId):
+    forum = consultarForum(ForumId)
+    Resposta = {"Status":"","Dados":"", "Mensagem":""}
+
+    
+    if forum:
+        Resposta["Status"] = "Sucesso"
+        Resposta["Dados"] = forum
+        Resposta["Mensagem"] = "Consulta de foruns"
+        return jsonify(Resposta)
+
+    Resposta["Status"] = "Error"
+    Resposta["Dados"] = {}
+    Resposta["Mensagem"] = "forum nao encontrado"
+    return jsonify(Resposta)
