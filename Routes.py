@@ -6,6 +6,8 @@ from Services.CadastrarAluno import cadastrarAluno
 from Services.DeletarAluno import deletarAluno
 from Services.ListarAluno import listarAlunos
 from Services.ConsultarAluno import consultarAluno
+from Services.CriarForum import criarForum
+from Services.CriarPost import criarPost
 from Models.Aluno import Aluno
 from Models.Resposta import Resposta
 
@@ -86,19 +88,19 @@ def removerAluno(ra):
     return jsonify(Resposta)
 
 
-@app.route("/forums", methods=["POST"])
+@app.route("/forum", methods=["POST"])
 def criarForum():
     dados = request.get_json()
 
     forum = criarForum(
         {
-        "ForumId":dados["ForumId"], 
-        "OwnerId":dados["OwnerId"], 
-        "Title": dados["Title"], 
-        "Description":dados["Description"], 
-        "CreateDate":dados["CreateDate"], 
-        "LastPostDate":dados["LastPostDate"], 
-        "Active":dados["Active"]
+            "ForumId":dados["ForumId"], 
+            "OwnerId":dados["OwnerId"], 
+            "Title": dados["Title"], 
+            "Description":dados["Description"], 
+            "CreateDate":dados["CreateDate"], 
+            "LastPostDate":dados["LastPostDate"], 
+            "Active":dados["Active"]
         }
     )
 
@@ -108,3 +110,16 @@ def criarForum():
 
     return jsonify(Resposta)
 
+@app.route("/forum/post", methods=["POST"])
+def criarPost():
+    dados = request.get_json()
+    post = criarPost(
+        {
+            "PostId":dados["PostId"],
+            "ForumId": dados["ForumId"],
+            "OwnerId":dados["OwnerId"],
+            "CreateDate":dados["CreateDate"],
+            "Message": dados["Message"],
+            "Visible": dados["Visible"]
+        }
+    )
