@@ -1,4 +1,4 @@
-from Server import alunos, foruns, post
+from Server import alunos, foruns, posts
 from Models.Forum import Forum
 from Models.Aluno import Aluno
 

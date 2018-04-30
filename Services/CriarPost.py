@@ -1,5 +1,5 @@
 from Server import alunos, foruns, posts
-from Models.Posts import Postagem
+from Models.Postagem import Postagem
 
 def criarPost(Postagem):
     if not Postagem["OwnerId"] or Postagem["OwnerId"] == "":

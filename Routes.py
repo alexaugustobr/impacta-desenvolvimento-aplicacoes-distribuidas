@@ -4,7 +4,7 @@ from Services.AtualizarAluno import atualizarAluno
 from Services.CadastrarAluno import cadastrarAluno
 from Services.DeletarAluno import deletarAluno
 from Services.ListarAluno import listarAlunos
-from Services.ConsultarAluno import consultarAluno
+from Services.ConsultaAluno import consultarAluno
 
 from Services.CriarForum import criarForum
 from Services.CriarPost import criarPost
@@ -15,7 +15,7 @@ from Services.ForumActivate import AtivarForum
 from Models.Aluno import Aluno
 from Models.Resposta import Resposta
 from Services.ListaPostagensForum import listaPostagensForum
-from Services.consultaForum import consultarForum
+from Services.ConsultaForum import consultarForum
 from Services.ListarForum import listarforum
 
 @app.route("/alunos", methods=["GET"])
@@ -196,7 +196,7 @@ def consultaForum(ForumId):
 def listarForunsAtivos():
     foruns = listarforum()
 
-    if Forumid
+    if Forum["ForumId"]:
         Resposta["Status"] = "Sucesso"
         Resposta["Dados"] = foruns
         Resposta["Mensagem"] = "Consulta de Forum"

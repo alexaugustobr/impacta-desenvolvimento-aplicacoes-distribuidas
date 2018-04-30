@@ -1,4 +1,4 @@
-from Server import forums
+from Server import foruns
 from Services.ConsultaForum import consultarForum
 from flask import request
 

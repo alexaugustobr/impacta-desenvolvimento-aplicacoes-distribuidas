@@ -8,9 +8,9 @@ foruns = []
 
 posts = []
 
-from Routes import *
+from Routes import*
 
-from ErroHandlers import *
+from ErroHandlers import*
 
 
 if __name__ == "__main__":
