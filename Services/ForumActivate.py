@@ -1,5 +1,6 @@
 from Server import forums
 from Services.ConsultaForum import consultarForum
+from flask import request
 
 def AtivarForum():
     Dados = request.get_json()
