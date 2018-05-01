@@ -1,7 +1,7 @@
 from Models.Forum import Forum
 from Server import foruns
 
-def listarforum():
+def listarForum():
     forunsAtivos = []
 
     for forum in foruns:

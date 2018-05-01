@@ -1,11 +1,11 @@
 from Server import foruns
-from Services.ConsultaForum import consultarForum
+from Services.ConsultaForum import consultaForum
 from flask import request
 
-def AtivarForum():
-    Dados = request.get_json()
+def ativarForum(Dados):
+    
 
-    forum = consultarForum(Dados["ForumId"])
+    forum = consultaForum(Dados["ForumId"])
     if forum:
         raise Exception("Forum nao encontrado")
 

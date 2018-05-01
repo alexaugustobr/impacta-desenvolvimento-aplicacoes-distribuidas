@@ -1,7 +1,7 @@
 from Server import foruns
 from flask import jsonify
 
-def consultarForum(ForumId):
+def consultaForum(ForumId):
     for forum in foruns:
         if str(forum["ForumId"]) == str(ForumId):
             return forum

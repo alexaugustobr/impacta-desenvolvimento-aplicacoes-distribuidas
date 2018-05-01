@@ -4,4 +4,4 @@ from Models.Aluno import Aluno
 
 def criarForum(Forum):
     foruns.append(Forum)
-    return Forums
+    return Forum
