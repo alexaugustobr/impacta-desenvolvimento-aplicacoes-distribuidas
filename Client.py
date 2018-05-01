@@ -19,9 +19,11 @@ print(req.api.post(url, json=aluno).json())
 aluno = {"ra":"1601606", "nome":"Gabriel Bueno"}
 print(req.api.post(url, json=aluno).json())
 
-aluno = {"ra":"1700054", "nome":"Henrique Borges da Silva "}
+aluno = {"ra":"1700054", "nome":"Henrique Borges da Silva"}
 print(req.api.post(url, json=aluno).json())
 
+aluno = {"ra":"1700677", "nome":"Diego santos"}
+print(req.api.post(url, json=aluno).json())
 
 print("Lista alunos")
 print(req.api.get(url).json())
