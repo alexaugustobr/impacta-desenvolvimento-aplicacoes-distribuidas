@@ -6,7 +6,6 @@ from Services.CriarPost import criarPost
 from Services.ConsultaPost import consultaPost
 from Services.ListaPostagensForum import listaPostagensForum
 
-
 @app.route("/forum/post", methods=["POST"])
 def criaPost():
     dados = request.get_json()
@@ -18,7 +17,8 @@ def criaPost():
 
 @app.route("/forum/<ForumId>/post", methods=["GET"])
 def listaPostagensForuns(ForumId):
-    postagens = listaPostagensForum(ForumId)
+    dados = request.args
+    postagens = listaPostagensForum(ForumId,dados['ra'])
     Resposta = {"Status":"","Dados":"", "Mensagem":""}
 
     if len(postagens) == 0: 
@@ -37,7 +37,8 @@ def listaPostagensForuns(ForumId):
 
 @app.route("/forum/post/<PostId>", methods=["GET"])
 def consultarPost(PostId):
-    post = consultaPost(PostId)
+    dados = request.args
+    post = consultaPost(PostId,dados['ra'])
 
     if post:
         Resposta["Status"] = "Sucesso"
@@ -49,3 +50,4 @@ def consultarPost(PostId):
     Resposta["Dados"] = {}
     Resposta["Mensagem"] = "Post nao encontrado"
     return jsonify(Resposta)
+

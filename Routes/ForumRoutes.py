@@ -8,6 +8,9 @@ from Services.AtivarForum import ativarForum
 from Services.ConsultaForum import consultaForum
 from Services.ListarForum import listarForum
 
+from Services.RegistrarForum import registrarForum
+from Services.RemoverRegistroForum import removerRegistroForum
+
 @app.route("/forum", methods=["GET"])
 def listarForunsAtivos():
     
@@ -83,4 +86,20 @@ def consultarForum(ForumId):
     Resposta["Status"] = "Error"
     Resposta["Dados"] = {}
     Resposta["Mensagem"] = "forum nao encontrado"
+    return jsonify(Resposta)
+
+@app.route("/forum/register", methods=["POST"])
+def register():
+    dados = request.get_json()
+    Resposta["Status"] = "Sucesso"
+    Resposta["Dados"] = registrarForum(dados)
+    Resposta["Mensagem"] = "Aluno registrado no forum"
+    return jsonify(Resposta)
+
+@app.route("/forum/unregister", methods=["POST"])
+def unregister():
+    dados = request.get_json()
+    Resposta["Status"] = "Sucesso"
+    Resposta["Dados"] = removerRegistroForum(dados)
+    Resposta["Mensagem"] = "Registro retirado do forum"
     return jsonify(Resposta)
