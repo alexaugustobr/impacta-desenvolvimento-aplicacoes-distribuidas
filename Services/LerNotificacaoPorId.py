@@ -1,5 +1,4 @@
 from Server import notificacoes
-from Models import Notificacao
 
 def lerNotificacaoPorRa(notificacaoId):
     for notificacao in notificacoes:
