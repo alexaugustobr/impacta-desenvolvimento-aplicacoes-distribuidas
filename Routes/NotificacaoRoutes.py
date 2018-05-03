@@ -2,13 +2,29 @@ from Server import app
 from flask import jsonify, request
 from Models.Notificacao import Notificacao
 
-from Services.LerNotificacaoPorId import LerNotificacaoPorId
-from Services.LerNotificacaoPorRa import LerNotificacaoPorRa
+from Services.LerNotificacaoPorId import lerNotificacaoPorId
+from Services.ListarNotificacaoPorRa import listarNotificacaoPorRa
+from Services.GravarNotificacao import gravarNotificacao
 
 
+@app.route("/notificacoes", methods=["POST"])
+def gravarNotificacoes():
+    dados = request.get_json()
+    notificacao = gravarNotificacao(dados)
+
+    if notificacao: 
+        Resposta["Status"] = "Sucesso"
+        Resposta["Dados"] = notificacao
+        Resposta["Mensagem"] = "Notificacao gravada"
+        return jsonify(Resposta)
+
+    Resposta["Status"] = "Erro"
+    Resposta["Dados"] = {}
+    Resposta["Mensagem"] = "Visualizar notificaçoes"
+    return jsonify(Resposta)
 
 @app.route("/notificacoes", methods=["GET"])
-def listarNotificacoes():
+def listaNotificacoes():
     
     notificacoes = listarNotificacoes()
 
@@ -25,7 +41,7 @@ def listarNotificacoes():
 
 
 @app.route("/notificacoes/<id>/arquivar", methods=["GET"])
-def arquivarNotificacao(id):
+def arquivaNotificacao(id):
     Dados = request.args
     notificacao = arquivarNotificacao(id, Dados['ra'])
 
@@ -44,7 +60,7 @@ def arquivarNotificacao(id):
 
 @app.route("/notificacoes/<id>", methods=["GET"])
 def LerNotificacaoPorIdRoute(id):
-    notificacao = LerNotificacaoPorId(id)
+    notificacao = lerNotificacaoPorId(id)
     
     if notificacao:
         Resposta["Status"] = "Sucesso"
@@ -61,11 +77,11 @@ def LerNotificacaoPorIdRoute(id):
 
 @app.route("/alunos/<ra>/notificacoes", methods=["GET"])
 def LerNotificacaoPorRaRoute(ra):
-    notificacao = LerNotificacaoPorRa(ra)
+    notificacoes = listarNotificacaoPorRa(ra)
     
-    if notificacao:
+    if notificacoes:
         Resposta["Status"] = "Sucesso"
-        Resposta["Dados"] = notificacao
+        Resposta["Dados"] = notificacoes
         Resposta["Mensagem"] = "Visualizar notificacao"
         return jsonify(Resposta)
 
