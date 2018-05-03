@@ -8,6 +8,8 @@ foruns = []
 
 posts = []
 
+notificacoes = []
+
 from Routes import*
 
 from ErroHandlers import*
