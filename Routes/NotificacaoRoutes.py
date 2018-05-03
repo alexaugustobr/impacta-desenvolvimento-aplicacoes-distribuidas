@@ -2,6 +2,9 @@ from Server import app
 from flask import jsonify, request
 from Models.Notificacao import Notificacao
 
+from Services.LerNotificacaoPorId import LerNotificacaoPorId
+from Services.LerNotificacaoPorRa import LerNotificacaoPorRa
+
 
 
 @app.route("/notificacoes", methods=["GET"])
@@ -40,8 +43,8 @@ def arquivarNotificacao():
 
 
 @app.route("/notificacoes/<id>", methods=["GET"])
-def consultarNotificacao(id):
-    notificacao = consultaNotificacao(id)
+def LerNotificacaoPorIdRoute(id):
+    notificacao = LerNotificacaoPorId(id)
     
     if notificacao:
         Resposta["Status"] = "Sucesso"
@@ -57,8 +60,8 @@ def consultarNotificacao(id):
 
 
 @app.route("/alunos/<ra>/notificacoes", methods=["GET"])
-def consultarNotificacaoAluno(ra):
-    notificacao = consultaNotificacaoAluno(ra)
+def LerNotificacaoPorRaRoute(ra):
+    notificacao = LerNotificacaoPorRa](ra)
     
     if notificacao:
         Resposta["Status"] = "Sucesso"
