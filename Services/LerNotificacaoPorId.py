@@ -1,6 +1,6 @@
 from Server import notificacoes
 
-def lerNotificacaoPorRa(notificacaoId):
+def lerNotificacaoPorId(notificacaoId):
     for notificacao in notificacoes:
         if notificacoes["id"] == notificacoesId:
             return notificacao
