@@ -24,10 +24,10 @@ def listarNotificacoes():
     return jsonify(Resposta)
 
 
-@app.route("/notificacoes/arquivar", methods=["POST"])
-def arquivarNotificacao():
-    Dados = request.get_json()
-    notificacao = arquivarNotificacao(Dados)
+@app.route("/notificacoes/<id>/arquivar", methods=["GET"])
+def arquivarNotificacao(id):
+    Dados = request.args
+    notificacao = arquivarNotificacao(id, Dados['ra'])
 
     if notificacao:
         Resposta["Status"] = "Sucesso"
@@ -61,7 +61,7 @@ def LerNotificacaoPorIdRoute(id):
 
 @app.route("/alunos/<ra>/notificacoes", methods=["GET"])
 def LerNotificacaoPorRaRoute(ra):
-    notificacao = LerNotificacaoPorRa](ra)
+    notificacao = LerNotificacaoPorRa(ra)
     
     if notificacao:
         Resposta["Status"] = "Sucesso"
