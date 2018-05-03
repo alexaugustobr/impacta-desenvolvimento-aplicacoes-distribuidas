@@ -70,3 +70,19 @@ def consultarNotificacaoAluno(ra):
     Resposta["Dados"] = {}
     Resposta["Mensagem"] = "Notificacao nao encontrada"
     return jsonify(Resposta)
+
+
+@app.route("/alunos/<ra>/notificacoes/recebidas", methods=["GET"])
+def consultarNotificacaoAlunoRecebida(ra):
+    notificacao = consultaNotificacaoAlunoRecebidas(ra)
+    
+    if notificacao:
+        Resposta["Status"] = "Sucesso"
+        Resposta["Dados"] = notificacao
+        Resposta["Mensagem"] = "Visualizar notificacao"
+        return jsonify(Resposta)
+
+    Resposta["Status"] = "Error"
+    Resposta["Dados"] = {}
+    Resposta["Mensagem"] = "Notificacao nao encontrada"
+    return jsonify(Resposta)
