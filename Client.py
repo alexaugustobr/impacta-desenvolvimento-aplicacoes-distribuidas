@@ -65,11 +65,11 @@ print(req.api.get(url).json())
 print("Criar notificacao para Aluno, de trabalho")
 Notificacao = {"id":"1", "data":"10/10/2018", "assunto":"Atividades","mensagem":"Atividades disponiveis","status":"Nao visualizado","aluno":"1700072"}
 url = "http://localhost:5000/notificacoes"
-print(req.api.post(url, json=Postagem).json())
+print(req.api.post(url, json=Notificacao).json())
 
 print("Criar notificacao para Aluno, de comunitacao")
 Notificacao = {"id":"2", "data":"10/10/2018", "assunto":"Nao vizualizado","mensagem":"Ola voce recebeu uma mensagem do professor","status":"Nao visualizado","aluno":"1700072"}
-print(req.api.post(url, json=Postagem).json())
+print(req.api.post(url, json=Notificacao).json())
 
 print("Lista notificacao")
 print(req.api.get(url).json())
