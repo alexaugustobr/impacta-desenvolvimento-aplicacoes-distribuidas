@@ -7,7 +7,7 @@ from Services.LerNotificacaoPorId import lerNotificacaoPorId
 from Services.ListarNotificacaoPorRa import listarNotificacaoPorRa
 from Services.GravarNotificacao import gravarNotificacao
 from Services.FiltrarNotificacaoPorAssunto import filtrarNotificacaoPorAssunto
-
+from Services.ExcluirNotificacao import excluiNotificacao
 
 @app.route("/notificacoes", methods=["POST"])
 def gravarNotificacoes():
@@ -142,6 +142,21 @@ def consultarNotificacaoDeAtividade(ra):
         Resposta["Dados"] = notificacao
         Resposta["Mensagem"] = "Visualizar notificacao"
         return jsonify(Resposta)
+    Resposta["Status"] = "Error"
+    Resposta["Dados"] = {}
+    Resposta["Mensagem"] = "Notificacao nao encontrada"
+    return jsonify(Resposta)
+
+@app.route("/notificacoes/<id>", methods=["DELETE"])
+def deletarNotificacao(id):
+    notificacao = excluiNotificacao(id)
+    
+    if notificacao:
+        Resposta["Status"] = "Sucesso"
+        Resposta["Dados"] = notificacao
+        Resposta["Mensagem"] = "Visualizar notificacao"
+        return jsonify(Resposta)
+
     Resposta["Status"] = "Error"
     Resposta["Dados"] = {}
     Resposta["Mensagem"] = "Notificacao nao encontrada"
