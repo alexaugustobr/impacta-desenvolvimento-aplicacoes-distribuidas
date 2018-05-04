@@ -25,23 +25,6 @@ def gravarNotificacoes():
     Resposta["Mensagem"] = "Visualizar notificaçoes"
     return jsonify(Resposta)
 
-@app.route("/notificacoes", methods=["GET"])
-def listaNotificacoes():
-    
-    notificacoes = listarNotificacoes()
-
-    if len(notificacoes) == 0: 
-        Resposta["Status"] = "Error"
-        Resposta["Dados"] = {}
-        Resposta["Mensagem"] = "Nenhuma notificacao"
-        return jsonify(Resposta)
-
-    Resposta["Status"] = "Sucesso"
-    Resposta["Dados"] = notificacoes
-    Resposta["Mensagem"] = "VIsualizar notificaçoes"
-    return jsonify(Resposta)
-
-
 @app.route("/notificacoes/<id>/arquivar", methods=["GET"])
 def arquivaNotificacao(id):
     Dados = request.args
