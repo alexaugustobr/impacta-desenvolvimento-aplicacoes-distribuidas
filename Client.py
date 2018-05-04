@@ -6,7 +6,7 @@ print("Cadastrando alunos")
 
 aluno = {"ra":"1700072", "nome":"Alex Augusto"}
 print(req.api.post(url, json=aluno).json())
-
+"""
 aluno = {"ra":"1700693", "nome":"Cinthia Queiroz"}
 print(req.api.post(url, json=aluno).json())
 
@@ -70,7 +70,7 @@ print(req.api.post(url, json=Notificacao).json())
 print("Criar notificacao para Aluno, de comunitacao")
 Notificacao = {"id":"2", "data":"10/10/2018", "assunto":"Nao vizualizado","mensagem":"Ola voce recebeu uma mensagem do professor","status":"Nao visualizado","aluno":"1700072"}
 print(req.api.post(url, json=Notificacao).json())
-
+"""
 print("Lista notificacao")
 print(req.api.get(url).json())
 print("Busca notificacao recebidas por ra")

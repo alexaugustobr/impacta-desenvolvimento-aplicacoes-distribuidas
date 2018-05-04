@@ -8,6 +8,7 @@ from Services.ListarNotificacaoPorRa import listarNotificacaoPorRa
 from Services.GravarNotificacao import gravarNotificacao
 from Services.FiltrarNotificacaoPorAssunto import filtrarNotificacaoPorAssunto
 from Services.ExcluirNotificacao import excluiNotificacao
+from Services.ArquivarNotificacao import arquivarNotificacao
 
 @app.route("/notificacoes", methods=["POST"])
 def gravarNotificacoes():

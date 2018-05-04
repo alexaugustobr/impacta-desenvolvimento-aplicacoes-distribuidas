@@ -6,4 +6,9 @@ def notificacoesRecebidas(ra):
     for notificacao in notificacoes:
         if str(notificacao['aluno']) == str(ra) and notificacao['status'] not "Arquivado" and notificacao['status'] not 'Vizualizado':
             notificacoesR.append(notificacao)
-    return len(notificacoesR)
+    t = len(notificacoesR)
+    
+    if t > 0:
+        return t
+
+    return 0
