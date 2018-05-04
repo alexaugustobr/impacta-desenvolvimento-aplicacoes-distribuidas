@@ -1,5 +1,5 @@
 from Server import notificacoes
-from Services.lerNotificacaoPorId import lerNotificacaoPorId
+from Services.LerNotificacaoPorId import lerNotificacaoPorId
 from Services.ConsultaAluno import consultaAluno
 
 
