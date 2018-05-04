@@ -4,11 +4,11 @@ from Server import notificacoes
 def notificacoesRecebidas(ra):
     notificacoesR = []
     for notificacao in notificacoes:
-        if str(notificacao['aluno']) == str(ra) and notificacao['status'] not "Arquivado" and notificacao['status'] not 'Vizualizado':
+        if str(notificacao['aluno']) == str(ra) and notificacao['status'] != "Arquivado" and notificacao['status'] != 'Vizualizado':
             notificacoesR.append(notificacao)
     t = len(notificacoesR)
     
     if t > 0:
-        return t
+        return {"quantidade":t}
 
-    return 0
+    return {"quantidade":0}

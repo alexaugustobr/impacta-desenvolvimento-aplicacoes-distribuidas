@@ -61,26 +61,29 @@ print("Ler post")
 url = "http://localhost:5000/forum/post/1?ra=1700693"
 print(req.api.get(url).json())
 
-
+"""
 print("Criar notificacao para Aluno, de trabalho")
 Notificacao = {"id":"1", "data":"10/10/2018", "assunto":"Atividades","mensagem":"Atividades disponiveis","status":"Nao visualizado","aluno":"1700072"}
 url = "http://localhost:5000/notificacoes"
 print(req.api.post(url, json=Notificacao).json())
 
+url = "http://localhost:5000/notificacoes"
 print("Criar notificacao para Aluno, de comunitacao")
 Notificacao = {"id":"2", "data":"10/10/2018", "assunto":"Nao vizualizado","mensagem":"Ola voce recebeu uma mensagem do professor","status":"Nao visualizado","aluno":"1700072"}
 print(req.api.post(url, json=Notificacao).json())
-"""
-print("Lista notificacao")
-print(req.api.get(url).json())
+
 print("Busca notificacao recebidas por ra")
 url = "http://localhost:5000/alunos/1700072/notificacoes/recebidas"
 print(req.api.get(url).json())
+"""
 print("Busca notificacao por id")
 url = "http://localhost:5000/notificacoes/1"
 print(req.api.get(url).json())
+
 print("Busca notificacao por ra")
 url = "http://localhost:5000/alunos/1700072/notificacoes"
 print(req.api.get(url).json())
+
 url = "http://localhost:5000/notificacoes/1/arquivar?ra=1700072"
 print(req.api.get(url).json())
+"""

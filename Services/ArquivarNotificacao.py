@@ -11,7 +11,7 @@ def arquivarNotificacao(id, ra):
     if not aluno:
         raise Exception("Aluno não encontrada")
 
-    if not notificacao:
+    if not notifica:
         raise Exception("Notificacao não encontrada")
     
     for notificacao in notificacoes:

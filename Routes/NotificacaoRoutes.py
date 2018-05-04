@@ -9,6 +9,7 @@ from Services.GravarNotificacao import gravarNotificacao
 from Services.FiltrarNotificacaoPorAssunto import filtrarNotificacaoPorAssunto
 from Services.ExcluirNotificacao import excluiNotificacao
 from Services.ArquivarNotificacao import arquivarNotificacao
+from Services.NotificacoesRecebidasService import notificacoesRecebidas
 
 @app.route("/notificacoes", methods=["POST"])
 def gravarNotificacoes():
@@ -63,8 +64,10 @@ def LerNotificacaoPorIdRoute(id):
 
 @app.route("/alunos/<ra>/notificacoes", methods=["GET"])
 def LerNotificacaoPorRaRoute(ra):
+    print(ra)
     notificacoes = listarNotificacaoPorRa(ra)
-    
+    print(notificacoes)
+
     if notificacoes:
         Resposta["Status"] = "Sucesso"
         Resposta["Dados"] = notificacoes
@@ -79,7 +82,7 @@ def LerNotificacaoPorRaRoute(ra):
 
 @app.route("/alunos/<ra>/notificacoes/recebidas", methods=["GET"])
 def consultarNotificacaoAlunoRecebida(ra):
-    notificacao = consultaNotificacaoAlunoRecebidas(ra)
+    notificacao = notificacoesRecebidas(ra)
     
     if notificacao:
         Resposta["Status"] = "Sucesso"
