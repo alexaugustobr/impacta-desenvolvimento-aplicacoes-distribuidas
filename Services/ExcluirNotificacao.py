@@ -1,12 +1,18 @@
-from Server import notificacoes, alunos
+from Server import notificacoes
 from Services.lerNotificacaoPorId import lerNotificacaoPorId
-from Services.lerNotificacaoPorRa import lerNotificacaoPorRa
+from Services.ConsultaAluno import consultaAluno
 
 
 def excluiNotificacao(id, ra):
+    aluno = consultaAluno(ra)
+    notificacao = lerNotificacaoPorId(id)
+    
+    if not aluno:
+        raise Exception("Aluno não encontrada")
 
-    for notificacaoNaLista in notificacoes and alunoNaLista in alunos:
-        if notificacaoNaLista['id'] == id and alunoNaLista['ra'] == ra:
-            notificacoes.remove(notificacaoNaLista)
-            return True
-    return False
+    if not notificacao:
+        raise Exception("Notificacao não encontrada")
+
+    notificacoes.remove(notificacao)
+    return True
+    

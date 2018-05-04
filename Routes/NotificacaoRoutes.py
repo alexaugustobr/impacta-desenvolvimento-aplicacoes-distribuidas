@@ -1,6 +1,7 @@
 from Server import app
 from flask import jsonify, request
 from Models.Notificacao import Notificacao
+from Models.Resposta import Resposta
 
 from Services.LerNotificacaoPorId import lerNotificacaoPorId
 from Services.ListarNotificacaoPorRa import listarNotificacaoPorRa
