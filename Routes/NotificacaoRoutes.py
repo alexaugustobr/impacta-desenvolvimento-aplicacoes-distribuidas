@@ -122,7 +122,7 @@ def consultarNotificacaoDeAtividade(ra):
     return jsonify(Resposta)
 
 @app.route("/alunos/<ra>/notificacoes/trabalhos", methods=["GET"])
-def consultarNotificacaoDeAtividade(ra):
+def consultarNotificacaoDeTrabalho(ra):
     notificacao = filtrarNotificacaoPorAssunto("Trabalhos", ra)
     if len(notificacao) != 0:
         Resposta["Status"] = "Sucesso"
@@ -135,7 +135,7 @@ def consultarNotificacaoDeAtividade(ra):
     return jsonify(Resposta)
 
 @app.route("/alunos/<ra>/notificacoes/comunicacoesdiversas", methods=["GET"])
-def consultarNotificacaoDeAtividade(ra):
+def consultarNotificacaoDeComunicacoes(ra):
     notificacao = filtrarNotificacaoPorAssunto("Comunicações diversas", ra)
     if len(notificacao) != 0:
         Resposta["Status"] = "Sucesso"
