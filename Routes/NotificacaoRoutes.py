@@ -5,6 +5,7 @@ from Models.Notificacao import Notificacao
 from Services.LerNotificacaoPorId import lerNotificacaoPorId
 from Services.ListarNotificacaoPorRa import listarNotificacaoPorRa
 from Services.GravarNotificacao import gravarNotificacao
+from Services.FiltrarNotificacaoPorAssunto import filtrarNotificacaoPorAssunto
 
 
 @app.route("/notificacoes", methods=["POST"])
@@ -101,6 +102,45 @@ def consultarNotificacaoAlunoRecebida(ra):
         Resposta["Mensagem"] = "Visualizar notificacao"
         return jsonify(Resposta)
 
+    Resposta["Status"] = "Error"
+    Resposta["Dados"] = {}
+    Resposta["Mensagem"] = "Notificacao nao encontrada"
+    return jsonify(Resposta)
+
+@app.route("/alunos/<ra>/notificacoes/atividades", methods=["GET"])
+def consultarNotificacaoDeAtividade(ra):
+    notificacao = filtrarNotificacaoPorAssunto("Atividades", ra)
+    if len(notificacao) != 0:
+        Resposta["Status"] = "Sucesso"
+        Resposta["Dados"] = notificacao
+        Resposta["Mensagem"] = "Visualizar notificacao"
+        return jsonify(Resposta)
+    Resposta["Status"] = "Error"
+    Resposta["Dados"] = {}
+    Resposta["Mensagem"] = "Notificacao nao encontrada"
+    return jsonify(Resposta)
+
+@app.route("/alunos/<ra>/notificacoes/trabalhos", methods=["GET"])
+def consultarNotificacaoDeAtividade(ra):
+    notificacao = filtrarNotificacaoPorAssunto("Trabalhos", ra)
+    if len(notificacao) != 0:
+        Resposta["Status"] = "Sucesso"
+        Resposta["Dados"] = notificacao
+        Resposta["Mensagem"] = "Visualizar notificacao"
+        return jsonify(Resposta)
+    Resposta["Status"] = "Error"
+    Resposta["Dados"] = {}
+    Resposta["Mensagem"] = "Notificacao nao encontrada"
+    return jsonify(Resposta)
+
+@app.route("/alunos/<ra>/notificacoes/comunicacoesdiversas", methods=["GET"])
+def consultarNotificacaoDeAtividade(ra):
+    notificacao = filtrarNotificacaoPorAssunto("Comunicações diversas", ra)
+    if len(notificacao) != 0:
+        Resposta["Status"] = "Sucesso"
+        Resposta["Dados"] = notificacao
+        Resposta["Mensagem"] = "Visualizar notificacao"
+        return jsonify(Resposta)
     Resposta["Status"] = "Error"
     Resposta["Dados"] = {}
     Resposta["Mensagem"] = "Notificacao nao encontrada"
