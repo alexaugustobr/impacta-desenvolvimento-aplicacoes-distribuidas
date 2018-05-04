@@ -6,7 +6,7 @@ print("Cadastrando alunos")
 
 aluno = {"ra":"1700072", "nome":"Alex Augusto"}
 print(req.api.post(url, json=aluno).json())
-"""
+
 aluno = {"ra":"1700693", "nome":"Cinthia Queiroz"}
 print(req.api.post(url, json=aluno).json())
 
@@ -61,7 +61,6 @@ print("Ler post")
 url = "http://localhost:5000/forum/post/1?ra=1700693"
 print(req.api.get(url).json())
 
-"""
 print("Criar notificacao para Aluno, de trabalho")
 Notificacao = {"id":"1", "data":"10/10/2018", "assunto":"Atividades","mensagem":"Atividades disponiveis","status":"Nao visualizado","aluno":"1700072"}
 url = "http://localhost:5000/notificacoes"
@@ -75,7 +74,7 @@ print(req.api.post(url, json=Notificacao).json())
 print("Busca notificacao recebidas por ra")
 url = "http://localhost:5000/alunos/1700072/notificacoes/recebidas"
 print(req.api.get(url).json())
-"""
+
 print("Busca notificacao por id")
 url = "http://localhost:5000/notificacoes/1"
 print(req.api.get(url).json())
@@ -86,4 +85,3 @@ print(req.api.get(url).json())
 
 url = "http://localhost:5000/notificacoes/1/arquivar?ra=1700072"
 print(req.api.get(url).json())
-"""
