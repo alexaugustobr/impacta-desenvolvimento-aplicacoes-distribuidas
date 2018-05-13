@@ -10,6 +10,8 @@ posts = []
 
 notificacoes = []
 
+professores = []
+
 from Routes import*
 
 from ErroHandlers import*
