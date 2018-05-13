@@ -12,6 +12,8 @@ notificacoes = []
 
 professores = []
 
+mensagens = []
+
 from Routes import*
 
 from ErroHandlers import*

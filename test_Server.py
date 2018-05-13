@@ -71,22 +71,59 @@ with app.test_client() as c:
 	json_data = rv.get_json()
 	assert Postagem == json_data['Dados']
 
+#CRIAR professor
+with app.test_client() as c:
+    professor = {'ra': '123456', 'nome': 'professor'}
+    rv = c.post('/professores', json=professor)
+    json_data = rv.get_json()
+    assert professor == json_data['Dados']
+
+
+#CRIAR mensagem
+with app.test_client() as c:
+    mensagem = {
+            "id":"33",
+            "texto":"Olá nova AC disponivel",
+            "destinatario":"1700072",
+            "remetente":"123456",
+            "lida":False,
+            "arquivada":False,
+            "respostas":[]
+        }
+    rv = c.post('/mensagens', json=mensagem)
+    json_data = rv.get_json()
+    assert mensagem == json_data['Dados']
 
 
 
+#ler mensagem
+with app.test_client() as c:
+    rv = c.get('/mensagens/33/ler')
+    json_data = rv.get_json()
+    assert True == json_data['Dados']
 
 
+#arquivar mensagem
+with app.test_client() as c:
+    rv = c.get('/mensagens/33/arquivar')
+    json_data = rv.get_json()
+    assert True == json_data['Dados']
 
 
-
-
-
-
-
-
-
-
-
+#responder mensagem
+with app.test_client() as c:
+    mensagem = {
+            "id":"34",
+            "texto":"Ac feita",
+            "destinatario":"123456",
+            "remetente":"1700072",
+            "lida":False,
+            "arquivada":False,
+            "respostas":[]
+        }
+    rv = c.post('/mensagens/33/responder', json=mensagem)
+    json_data = rv.get_json()
+    assert mensagem == json_data['Dados']
 
 
 
